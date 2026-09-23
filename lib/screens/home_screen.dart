@@ -11,6 +11,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int counter = 0;
 
+  void updateState(String operation) {
+    if (operation == "+") {
+      return setState(() {
+        counter++;
+      });
+    }
+    if (operation == "-") {
+      return setState(() {
+        counter++;
+      });
+    }
+    if (operation == "0") {
+      return setState(() {
+        counter = 0;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +53,9 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         spacing: 15,
         children: [
-          customBtn(counter, "+", Icons.add),
-          customBtn(counter, "-", Icons.remove),
-          customBtn(counter, "0", Icons.restore),
+          customBtn(counter, "+", Icons.add, (() => updateState("+"))),
+          customBtn(counter, "-", Icons.remove, (() => updateState("-"))),
+          customBtn(counter, "0", Icons.restore, (() => updateState("0"))),
         ],
       ),
     );

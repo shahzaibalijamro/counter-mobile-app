@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-Widget customBtn(int counter, String operator, IconData icon) {
+Widget customBtn(
+  int counter,
+  String operator,
+  IconData icon,
+  void Function() updateState,
+) {
   return FloatingActionButton(
     child: Icon(icon),
     onPressed: () {
-      counter = operator == "+"
-          ? counter += 1
-          : operator == "-"
-          ? counter + 1
-          : counter = 0;
       print("Counter: $counter");
       print("Button pressed");
+      updateState();
     },
   );
 }
